@@ -51,7 +51,7 @@ class BarlowTwins(nn.Module):
 
         num_vectors = len(z1)
 
-        cross_correlation_matrix = torch.matmul(self.bn(z1.T), self.bn(z2)) / num_vectors
+        cross_correlation_matrix = torch.matmul(self.bn(z1).T, self.bn(z2)) / num_vectors
 
         on_diag_loss = torch.diagonal(cross_correlation_matrix).add_(-1).pow_(2).sum()
 
