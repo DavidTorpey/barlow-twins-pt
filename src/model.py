@@ -43,10 +43,10 @@ class BarlowTwins(nn.Module):
         minimise 1-correlation. Similarly, we minimise off-diagonal correlation
         values since we want these vectors to be dissimilar.
         """
-        h1 = self.encoder(view1)
+        h1 = self.encoder(view1).squeeze(-1).squeeze(-1)
         z1 = self.projector(h1)
 
-        h2 = self.encoder(view2)
+        h2 = self.encoder(view2).squeeze(-1).squeeze(-1)
         z2 = self.projector(h2)
 
         num_vectors = len(z1)
